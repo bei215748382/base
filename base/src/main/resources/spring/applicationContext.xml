@@ -13,7 +13,7 @@
 	<context:annotation-config />
 
 	<!-- Activates scanning of @Repository and @Service -->
-	<context:component-scan base-package="com.mlnx.chronic.service,com.mlnx.chronic.repo" />
+	<context:component-scan base-package="com.mlnx.base.service" />
 
 	<!-- 引入jdbc配置文件 -->
 	<context:property-placeholder location="classpath:properties/db.properties" />
@@ -50,22 +50,14 @@
 	<!-- MapperScanner配置.自动去搜索mapper里的对象,并注入. -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		 <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
-		<property name="basePackage" value="com.mlnx.chronic.mapper" />
+		<property name="basePackage" value="com.mlnx.base.mapper" />
 	</bean>
 
 	<!-- 启动Spring注解事务 -->
 	<tx:annotation-driven transaction-manager="transactionManager"/>
 
-	<import resource="spring-datasource-base.xml"/>
-
 	<!-- 支持上传文件 -->
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
 	
-	<!-- 注入cassandra数据库的服务类 ，支持连接cassandra，nosql数据库 -->	
-	<bean id="cassandraService" class="com.mlnx.chronic.service.CassandraService"></bean>	
-	
-	<!-- 注入cassandra数据库的服务类 ，支持连接cassandra，nosql数据库 -->	
-	<bean id="reportService" class="com.mlnx.chronic.service.ReportService"></bean>	
-
 </beans>

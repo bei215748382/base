@@ -14,12 +14,11 @@
 
 	<!-- 配置别名 -->
 	<typeAliases>
-		<package name="com.mlnx.chronic.entity" />
-		<package name="com.mlnx.chronic.vo" />
+		<package name="com.mlnx.base.entity" />
 	</typeAliases>
 
 	<!-- 类型处理 -->
-	<typeHandlers>
-		<package name="com.mlnx.chronic.mybatis.handler" />
-	</typeHandlers>
+<!-- 	<typeHandlers> -->
+<!-- 		<package name="com.mlnx.base.mybatis.handler" /> -->
+<!-- 	</typeHandlers> -->
 </configuration>
