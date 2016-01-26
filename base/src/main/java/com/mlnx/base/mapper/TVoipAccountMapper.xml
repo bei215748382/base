@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mlnx.base.mapper.TVoipAccountMapper" >
+  <resultMap id="BaseResultMap" type="com.mlnx.base.entity.TVoipAccount" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="voip_account" property="voipAccount" jdbcType="VARCHAR" />
+    <result column="date_created" property="dateCreated" jdbcType="VARCHAR" />
+    <result column="voip_password" property="voipPassword" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="friend_name" property="friendName" jdbcType="VARCHAR" />
+    <result column="sub_account_sid" property="subAccountSid" jdbcType="VARCHAR" />
+    <result column="sub_token" property="subToken" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_voip_account
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mlnx.base.entity.TVoipAccount" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="BEFORE" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into t_voip_account (id, voip_account, date_created, 
+      voip_password, user_id, friend_name, 
+      sub_account_sid, sub_token)
+    values (#{id,jdbcType=INTEGER}, #{voipAccount,jdbcType=VARCHAR}, #{dateCreated,jdbcType=VARCHAR}, 
+      #{voipPassword,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, #{friendName,jdbcType=VARCHAR}, 
+      #{subAccountSid,jdbcType=VARCHAR}, #{subToken,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.mlnx.base.entity.TVoipAccount" >
+    update t_voip_account
+    set voip_account = #{voipAccount,jdbcType=VARCHAR},
+      date_created = #{dateCreated,jdbcType=VARCHAR},
+      voip_password = #{voipPassword,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=INTEGER},
+      friend_name = #{friendName,jdbcType=VARCHAR},
+      sub_account_sid = #{subAccountSid,jdbcType=VARCHAR},
+      sub_token = #{subToken,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select id, voip_account, date_created, voip_password, user_id, friend_name, sub_account_sid, 
+    sub_token
+    from t_voip_account
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select id, voip_account, date_created, voip_password, user_id, friend_name, sub_account_sid, 
+    sub_token
+    from t_voip_account
+  </select>
+</mapper>
