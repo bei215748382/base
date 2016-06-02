@@ -8,7 +8,7 @@
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from t_city
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id}
   </delete>
   <insert id="insert" parameterType="com.mlnx.base.entity.TCity" >
     <selectKey resultType="java.lang.Integer" keyProperty="id" order="BEFORE" >
@@ -16,19 +16,19 @@
     </selectKey>
     insert into t_city (id, name, province_id
       )
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{provinceId,jdbcType=INTEGER}
+    values (#{id}, #{name}, #{provinceId}
       )
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.mlnx.base.entity.TCity" >
     update t_city
-    set name = #{name,jdbcType=VARCHAR},
-      province_id = #{provinceId,jdbcType=INTEGER}
-    where id = #{id,jdbcType=INTEGER}
+    set name = #{name},
+      province_id = #{provinceId}
+    where id = #{id}
   </update>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select id, name, province_id
     from t_city
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id}
   </select>
   <select id="selectAll" resultMap="BaseResultMap" >
     select id, name, province_id
